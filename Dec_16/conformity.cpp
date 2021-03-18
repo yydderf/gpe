@@ -1,24 +1,41 @@
 #include <iostream>
+#include <vector>
+#include <map>
 #include <algorithm>
 
 using namespace std;
 
+string join(vector<string> courses) {
+    string ret;
+    for (int i = 0; i < courses.size(); i++) {
+        ret += courses[i];
+    }
+    return ret;
+}
+
 int main() {
     int n;
     while (cin >> n && !(n == 0)) {
-        int arr[n][5];
+        map<string, int> comboCount;
         for (int i = 0; i < n; i++) {
+            vector<string> courses(5);
             for (int j = 0; j < 5; j++) {
-                cin >> arr[i][j];
+                cin >> courses[j];
             }
-            sort(arr[i], arr[i]+5);
+            sort(courses.begin(), courses.end());
+            comboCount[join(courses)]++;
         }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < 5; j++) {
-                cout << arr[i][j] << " ";
+        int maxNum = 0, totalNum = 0;
+        for (map<string, int>::iterator it = comboCount.begin(); it != comboCount.end(); it++) {
+            if (it->second > maxNum) {
+                maxNum = it->second;
+                totalNum = it->second;
             }
-            cout << endl;
+            else if (it->second == maxNum) {
+                totalNum += it->second;
+            }
         }
+        cout << totalNum << endl;
     }
     return 0;
 }
