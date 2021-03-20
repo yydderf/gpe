@@ -12,3 +12,9 @@
 - conformity --> Submitted
 - countingChaos --> Submitted
 - marbles --> Viewed / Tried
+
+## Mar 20
+
+- snowClearing --> Submitted
+- smithNumber --> Tried (0.4)
+
